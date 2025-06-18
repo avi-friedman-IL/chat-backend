@@ -1,0 +1,116 @@
+[{
+  "_id": {
+    "$oid": "67e97e582d9dc3c4cf229d83"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "avi friedman",
+  "username": "avi",
+  "imgUrl": null,
+  "color": "#F39C12",
+  "isGoogleLogin": false,
+  "isAdmin": true,
+  "contacts": [
+    {
+      "id": "67e97e582d9dc3c4cf229d83",
+      "fullname": "avi friedman",
+      "color": "#F39C12"
+    }
+  ],
+  "groups": null,
+  "isTeamManager": false,
+  "newMsgs": null,
+  "notifications": []
+},
+{
+  "_id": {
+    "$oid": "67e97e6d2d9dc3c4cf229d84"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "אברהם פרידמן",
+  "username": "אברהם",
+  "imgUrl": null,
+  "color": "#34495E",
+  "isGoogleLogin": false,
+  "isAdmin": false,
+  "contacts": [
+    {
+      "id": "67e97e582d9dc3c4cf229d83",
+      "fullname": "avi friedman",
+      "color": "#F39C12"
+    }
+  ],
+  "groups": null,
+  "isTeamManager": false,
+  "newMsgs": null,
+  "notifications": []
+},
+{
+  "_id": {
+    "$oid": "67e980a12d9dc3c4cf229d86"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "papa",
+  "username": "papa",
+  "imgUrl": null,
+  "color": "#e083b3",
+  "isGoogleLogin": false,
+  "isAdmin": true,
+  "contacts": [],
+  "groups": null,
+  "isTeamManager": false,
+  "newMsgs": null,
+  "notifications": []
+},
+{
+  "_id": {
+    "$oid": "67e981b980c0d17d36baad35"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "iaia",
+  "username": "iaia",
+  "imgUrl": null,
+  "color": "#1f55e7",
+  "isGoogleLogin": false,
+  "isAdmin": false,
+  "contacts": [],
+  "groups": null,
+  "isTeamManager": false,
+  "newMsgs": null,
+  "notifications": []
+},
+{
+  "_id": {
+    "$oid": "681b7261a4c553f83dbb5621"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "puki ja",
+  "username": "puki",
+  "imgUrl": null,
+  "color": "#d61272",
+  "isGoogleLogin": false,
+  "isAdmin": false,
+  "contacts": [],
+  "groups": null,
+  "isTeamManager": false,
+  "newMsgs": null,
+  "notifications": []
+},
+{
+  "_id": {
+    "$oid": "681b734bc93a82d50d73d34f"
+  },
+  "email": null,
+  "password": "1030",
+  "fullname": "jjjjj",
+  "username": "jj",
+  "imgUrl": null,
+  "color": "#abb2e3",
+  "isGoogleLogin": false,
+  "isAdmin": false,
+  "contacts": []
+}]
