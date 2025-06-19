@@ -4,9 +4,9 @@ import Cryptr from 'cryptr'
 import { userService } from '../user/user.service.js'
 
 
-if (!process.env.SECRET) {
-    throw new Error('Cryptr: secret must be a non-0-length string')
- }
+// if (!process.env.SECRET) {
+//     throw new Error('Cryptr: secret must be a non-0-length string')
+//  }
  
 const cryptr = new Cryptr(process.env.SECRET || 'Secret-Puk-1234')
 export const authService = {
