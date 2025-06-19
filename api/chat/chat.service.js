@@ -10,7 +10,7 @@ export const chatService = {
    update,
 }
 async function query(filterBy) {
-   // if (!filterBy.toId || !filterBy.fromId) return []
+   if (!filterBy.toId || !filterBy.fromId) return []
    const criteria = _buildCriteria(filterBy)
    try {
       const collection = await dbService.getCollection('chat')
