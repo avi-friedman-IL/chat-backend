@@ -1,27 +1,29 @@
-// import dotenv from 'dotenv'
-// dotenv.config()
-import http from 'http'
-import path from 'path'
-import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
 import express from 'express'
 import cookieParser from 'cookie-parser'
-// import { fileURLToPath } from 'url'
-
-// const __filename = fileURLToPath(import.meta.url)
-// const __dirname = dirname(__filename)
-
-import { logger } from './services/logger.service.js'
+import cors from 'cors'
+import http from 'http'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { setupSocketAPI } from './services/socket.service.js'
+import { logger } from './services/logger.service.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 import { chatRoutes } from './api/chat/chat.routes.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+
 
 const app = express()
 const server = http.createServer(app)
 
 app.use(cookieParser())
 app.use(express.json())
-
+app.use(express.static('public'))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 if (process.env.NODE_ENV === 'production') {
    app.use(express.static(path.resolve('public')))
 } else {
@@ -29,6 +31,8 @@ if (process.env.NODE_ENV === 'production') {
       origin: [
          'http://127.0.0.1:3000',
          'http://localhost:3000',
+         'http://127.0.0.1:3030',
+         'http://localhost:3030',
          'http://127.0.0.1:5173',
          'http://localhost:5173',
       ],
@@ -36,6 +40,8 @@ if (process.env.NODE_ENV === 'production') {
    }
    app.use(cors(corsOptions))
 }
+
+
 
 // Routes
 app.use('/api/user', userRoutes)
