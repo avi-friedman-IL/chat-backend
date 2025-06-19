@@ -46,8 +46,14 @@ export async function updateChat(req, res) {
 }
 
 export async function deleteChat(req, res) {
+    const { loggedinUser } = req
     try {
         await chatService.remove(req.params.id)
+        socketService.broadcast({
+            type:'chat-removed',
+            data: req.params.id,
+            userId: loggedinUser._id,
+        })
         res.send({ msg: 'Chat deleted successfully' })
     } catch (err) {
         logger.error('Failed to delete chat', err)

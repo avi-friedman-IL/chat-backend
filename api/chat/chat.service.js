@@ -83,4 +83,3 @@ async function getById(chatId) {
     }
     return criteria
  }
-

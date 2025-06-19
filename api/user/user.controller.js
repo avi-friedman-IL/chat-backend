@@ -1,4 +1,5 @@
 import { logger } from '../../services/logger.service.js'
+import { socketService } from '../../services/socket.service.js'
 import { userService } from './user.service.js'
 export async function getUsers(req, res) {
     const filterBy = req.query
@@ -35,6 +36,7 @@ export async function addUser(req, res) {
 export async function updateUser(req, res) {
     try {
         const user = await userService.update(req.body)
+        socketService.emitToUser('user-updated', user, user._id)
         res.send(user)
     } catch (err) {
         res.status(500).send({ err: 'Failed to update user' })
