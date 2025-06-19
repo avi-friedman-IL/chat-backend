@@ -15,15 +15,14 @@ import { chatRoutes } from './api/chat/chat.routes.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-
-
 const app = express()
 const server = http.createServer(app)
-
+setupSocketAPI(server)
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static('public'))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
 if (process.env.NODE_ENV === 'production') {
    app.use(express.static(path.resolve('public')))
 } else {
@@ -41,18 +40,14 @@ if (process.env.NODE_ENV === 'production') {
    app.use(cors(corsOptions))
 }
 
-
-
 // Routes
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/chat', chatRoutes)
 
-setupSocketAPI(server)
-
-// app.get('/**', (req, res) => {
-//    res.sendFile(path.resolve('public/index.html'))
-// })
+app.get('*', (req, res) => {
+   res.sendFile(path.resolve('public/index.html'))
+})
 
 const PORT = process.env.PORT || 3030
 // console.log(process.env)
