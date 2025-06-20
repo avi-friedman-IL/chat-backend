@@ -1,5 +1,5 @@
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -51,7 +51,17 @@ app.get('*', (req, res) => {
 })
 
 const PORT = process.env.PORT || 3030
-// console.log(process.env)
+console.log('Starting server...')
+console.log('Environment:', process.env.NODE_ENV)
+console.log('Port:', PORT)
+console.log('Current directory:', __dirname)
+
 server.listen(PORT, () => {
    logger.info(`Server is running on port ${PORT}`)
+   console.log(`Server is running on port ${PORT}`)
+})
+
+server.on('error', (error) => {
+   console.error('Server error:', error)
+   logger.error('Server error:', error)
 })
