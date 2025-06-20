@@ -1,11 +1,10 @@
-// import dotenv from 'dotenv'
-// dotenv.config()
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import http from 'http'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+
 import { setupSocketAPI } from './services/socket.service.js'
 import { logger } from './services/logger.service.js'
 import { authRoutes } from './api/auth/auth.routes.js'
@@ -18,6 +17,7 @@ const __dirname = dirname(__filename)
 const app = express()
 const server = http.createServer(app)
 setupSocketAPI(server)
+
 app.use(cookieParser())
 app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))

@@ -2,8 +2,8 @@ import { authService } from './auth.service.js'
 
 export async function signup(req, res) {
    try {
-      const { username, password } = req.body
-      const account = await authService.signup(username, password)
+      const { username, password, fullname} = req.body
+      const account = await authService.signup(username, password, fullname)
       const user = await authService.login(username, password)
       const loginToken = authService.getLoginToken(user)
       res.cookie('loginToken', loginToken)
