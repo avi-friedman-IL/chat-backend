@@ -20,12 +20,12 @@ const server = http.createServer(app)
 setupSocketAPI(server)
 app.use(cookieParser())
 app.use(express.json())
-app.use(express.static('public'))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 if (process.env.NODE_ENV === 'production') {
-   app.use(express.static(path.resolve('public')))
+   app.use(express.static(path.join(__dirname, 'public')))
 } else {
+   app.use(express.static('public'))
    const corsOptions = {
       origin: [
          'http://127.0.0.1:3000',
@@ -45,8 +45,9 @@ app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/chat', chatRoutes)
 
+// This should be the last route - it catches all other routes and serves the React app
 app.get('*', (req, res) => {
-   res.sendFile(path.resolve('public/index.html'))
+   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 const PORT = process.env.PORT || 3030
