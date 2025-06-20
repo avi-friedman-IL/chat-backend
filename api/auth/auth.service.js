@@ -1,14 +1,16 @@
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 import Cryptr from 'cryptr'
 import { userService } from '../user/user.service.js'
 
+// Use a default secret for production if not provided
+const SECRET = process.env.SECRET || 'Secret-Puk-1234'
+const cryptr = new Cryptr(SECRET)
 
 // if (!process.env.SECRET) {
 //     throw new Error('Cryptr: secret must be a non-0-length string')
 //  }
  
-const cryptr = new Cryptr(process.env.SECRET)
 export const authService = {
    signup,
    login,
