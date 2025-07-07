@@ -10,7 +10,7 @@ export const chatService = {
    update,
 }
 async function query(filterBy) {
-   if (!filterBy.toId || !filterBy.fromId) return []
+   if (!filterBy.userId) return []
    const criteria = _buildCriteria(filterBy)
    try {
       const collection = await dbService.getCollection('chat')
@@ -74,11 +74,11 @@ async function getById(chatId) {
  
  function _buildCriteria(filterBy) {
     const criteria = {}
-    if (filterBy.toId && filterBy.fromId) {
-      const {toId, fromId} = filterBy
+    if (filterBy.userId) {
+      const {userId} = filterBy
         criteria.$or = [
-            { toId, fromId },
-            { fromId: toId, toId: fromId }
+            { toId: userId },
+            { fromId: userId }
         ]
     }
     return criteria
