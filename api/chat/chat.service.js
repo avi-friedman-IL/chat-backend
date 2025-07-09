@@ -78,7 +78,8 @@ async function getById(chatId) {
       const {userId} = filterBy
         criteria.$or = [
             { toId: userId },
-            { fromId: userId }
+            { ownerId: userId },
+            { 'groupUsers._id': userId }
         ]
     }
     return criteria

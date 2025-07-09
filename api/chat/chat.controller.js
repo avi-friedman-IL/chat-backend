@@ -24,9 +24,18 @@ export async function getChatById(req, res) {
 
 export async function addChat(req, res) {
    const chat = req.body
+   const { loggedinUser } = req
    try {
       const addedChat = await chatService.add(chat)
-      socketService.emitToUser('chat-added', addedChat, chat.toId)
+      if (chat.groupUsers) {
+         socketService.broadcast({
+            type: 'chat-added',
+            data: addedChat,
+            userId: loggedinUser._id,
+         })
+      } else {
+         socketService.emitToUser('chat-added', addedChat, chat.toId)
+      }
       res.send(addedChat)
    } catch (err) {
       logger.error('Failed to add chat', err)
